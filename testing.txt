@@ -1,0 +1,29 @@
+jest and vitest are the frameworks we are using, there are many frameworks in javascript that lets you do testing 
+How can you after you written tests, add a Ci/CD pipeline, so if developers come and make a wrong change, how can you catch them right at the pull request
+how can you make a workflow pull request fail, if the tests fails 
+You wrote a file, inside the file you wrote a bunch of test cases, the test cases doesn't ofcourse check everything, you cannot write infinite test cases and cover every edge case
+but you try to cover the most common edge cases these are what are called automated testing
+
+You can create a sister file called index.test.js, in which we will import the function and we also need to make sure the function is exporting
+this is an ugly way to write tests 
+Hence having tests are super useful, if you have bunch of developers, if we have good tests, those tests should automatically fail if there was a bug in the code 
+that's why we need test, thats why we write tests 
+
+After you write your application logic, application logic means the real logic that runs in production that is running on an EC2 machine 
+testing logic is the logic that you run from time to time to make sure tests are running, but you dont run them on EC2 machine
+
+Jest is a delightful javascript testing framework with a focus on simplicity
+To install jest in a ts project we have to run the command npm install --save-dev ts-jest @jest/globals
+the --save-dev flag is used to save the jest dependencies, in the devDependencies not in the dependencies in package.json
+the difference is anything that doesn't run on your EC2 machine, that you only need during development is we should put in the devDependencies 
+
+To initialise the jest file, we have to run the command -> npx ts-jest config:init
+now changing our package.json scripts
+scripts: {
+    "test": "jest"
+}
+now we can run npm run test to run all our test cases 
+create a tests folder in src and there create a file index.test.ts, jest by default will go through your complete src folder and look for all files that end with .test.ts
+and try for look for tests there, so it doesnt matter where you store it as long as the file ends with .test.ts or .spec.ts jest will understand, ki this the file for me, i need to run all the tests that exists inside this file 
+
+the supertest library is written for you to test http servers 
