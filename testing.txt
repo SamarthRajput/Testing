@@ -26,4 +26,22 @@ now we can run npm run test to run all our test cases
 create a tests folder in src and there create a file index.test.ts, jest by default will go through your complete src folder and look for all files that end with .test.ts
 and try for look for tests there, so it doesnt matter where you store it as long as the file ends with .test.ts or .spec.ts jest will understand, ki this the file for me, i need to run all the tests that exists inside this file 
 
-the supertest library is written for you to test http servers 
+the supertest library is written for you to test http servers, is the ideal way to test an express server 
+to install supertest library run the command  npm i supertest @types/supertest
+now initialize jest.config.ts
+we create a bin.ts file in src folder where we import our app and write app.listen(3000)
+which means that index.ts is what tests will use, index.test.ts will never import bin.ts, but the bin.ts is what you run finally 
+
+We have a complete coverage of the specific endpoint, coverage means when my testcases run there are cases that check all the paths of code
+You dont only check for success cases, you also check for unsuccessful cases and should add tests for them also 
+.set({}) is what we use in tests to set the headers  
+
+
+We usually avoid writing database calls when we are writing unit tests 
+3 types of testing that we can do 
+1. Unit testing: Which as the name suggests, we test a small unit of your code, you dont start/connect to databases 
+2. Integration testing: where we do connect to databases 
+3. end to end testing: when we actually start a browser while testing 
+
+We can do mocking the database calls, using jest but vitest make it slightly easier 
+vitest is also a testing framework, it is highly backward compatible with jest  
