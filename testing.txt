@@ -45,3 +45,15 @@ We usually avoid writing database calls when we are writing unit tests
 
 We can do mocking the database calls, using jest but vitest make it slightly easier 
 vitest is also a testing framework, it is highly backward compatible with jest  
+
+A database is an external service 
+We dont have to hit the actual database, our tests will mock out the database calls
+We dont have to migrate the database but we have to generate the clients using npx prisma generate command 
+
+The problem with mocking is as our project become bigger and bigger you have to add other things 
+vitest lets you do deep mocking 
+Another way to mock variables is to let vitest figure out the types and mock out all the attributes of the object being mocked 
+We could just tell vitest ki please mock the whole thing, so we dont have to define the object vi.mock() ourselves
+We have to download other dependency npm i -D vitest-mock-extended
+it lets you mock recursively all the functions they have 
+A common practice that you create a __mocks__ folder right next to the file which we want to mock out
