@@ -75,3 +75,6 @@ You should test the inputs and whether or not you were sending the right inputs 
 
 we will spy on the function call, spying means even though this is the mocked function, we want to spy on it 
 we want to see was this function called, what inputs was this called with that is what spying on a function means 
+
+
+cypress, playwright are the frameworks that lets us do end to end testing 
