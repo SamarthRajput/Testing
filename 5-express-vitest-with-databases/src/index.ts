@@ -26,19 +26,54 @@ app.post("/sum", async(req, res) => {
     // We want this request doesnt actually run, whenever this code is being tested, we want to run a unit test 
     // Unit test are supposed to just all the lines of code that are not dependent on external services
     // this part is dependent on external service which we just assume works and hence we just mock out this function call 
-    await prismaClient.sum.create({
+    // this is how we insert something in the database
+    // this will return a mocked value 
+    const request = await prismaClient.request.create({
         data: {
             a: parsedResponse.data.a,
             b: parsedResponse.data.b,
-            result: answer
+            type: "Sum",
+            answer: answer
         }
     })
 
-
     res.json({
-        answer
+        answer, 
+        id: request.id
     })
 });
+
+const multiplyInput = z.object({
+    a: z.number(),
+    b: z.number()
+})
+
+app.post("/multiply", async (req, res) => {
+    const parsedResponse = multiplyInput.safeParse(req.body);
+
+    if(!parsedResponse.success){
+        return res.status(422).json({
+            message: "Incorrect Inputs"
+        })
+    }
+
+    const result = parsedResponse.data.a + parsedResponse.data.b;
+
+    await prismaClient.request.create({
+        data: {
+            a: parsedResponse.data.a,
+            b: parsedResponse.data.b,
+            type: "Multiply",
+            answer: result
+        }
+    })
+
+    res.json({
+        result
+    })
+})
+
+
 
 app.get("/sum", async (req, res) => {
     const parsedResponse = sumInput.safeParse({

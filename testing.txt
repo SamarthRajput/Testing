@@ -1,4 +1,5 @@
 jest and vitest are the frameworks we are using, there are many frameworks in javascript that lets you do testing 
+jest, mocha and vitest are the framework that are used for testing 
 How can you after you written tests, add a Ci/CD pipeline, so if developers come and make a wrong change, how can you catch them right at the pull request
 how can you make a workflow pull request fail, if the tests fails 
 You wrote a file, inside the file you wrote a bunch of test cases, the test cases doesn't ofcourse check everything, you cannot write infinite test cases and cover every edge case
@@ -34,12 +35,16 @@ which means that index.ts is what tests will use, index.test.ts will never impor
 
 We have a complete coverage of the specific endpoint, coverage means when my testcases run there are cases that check all the paths of code
 You dont only check for success cases, you also check for unsuccessful cases and should add tests for them also 
-.set({}) is what we use in tests to set the headers  
+.set({}) is what we use in tests to set the headers    
 
 
 We usually avoid writing database calls when we are writing unit tests 
 3 types of testing that we can do 
 1. Unit testing: Which as the name suggests, we test a small unit of your code, you dont start/connect to databases 
+    We might have multiple external services a database like postgres be it kafka or be it redis, whenever you are testing the code you will mock out all of these external dependencies somehow and only test the logic of your code
+    we dont need to start a database, we dont need to migrate a database
+    evenually when we deploy our application, we will migrate our database
+    we can simply do npx prisma generate to generate the prisma clients 
 2. Integration testing: where we do connect to databases 
 3. end to end testing: when we actually start a browser while testing 
 
@@ -56,4 +61,17 @@ Another way to mock variables is to let vitest figure out the types and mock out
 We could just tell vitest ki please mock the whole thing, so we dont have to define the object vi.mock() ourselves
 We have to download other dependency npm i -D vitest-mock-extended
 it lets you mock recursively all the functions they have 
-A common practice that you create a __mocks__ folder right next to the file which we want to mock out
+A common practice that you create a __mocks__ folder right next to the file which we want to mock out in the same directory  
+
+The good thing about unit testing is you dont actually need a database 
+wouldn't it be nice please mock out the whole thing deeply, figure out all keys exists on the prismaClient and mock out everything 
+if someone calls prismaClient.request.create or prismaClient.request.update it should be mocked out, it is known as deep mocking 
+the word deep comes from deep copying (deep and shallow copy ) 
+
+
+we can use a mockReturnValue that returns a mocked value 
+What if we start to store wrong things in the database, we were never testing the inputs to the mock
+You should test the inputs and whether or not you were sending the right inputs to a specific functions 
+
+we will spy on the function call, spying means even though this is the mocked function, we want to spy on it 
+we want to see was this function called, what inputs was this called with that is what spying on a function means 

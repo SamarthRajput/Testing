@@ -10,8 +10,10 @@ import { multiply, sum } from "..";
 
 // You describe, ki I am going to write all of my tests for a sum function, a sum module that i am trying to test 
 // this describe means inside this, however many tests i write would be for the sum function 
+// a describe block is supposed to add a bunch of test cases, we add multiple test cases 
+//  we try cover as many edge cases as possible 
 describe('Testing all the calculator functionality', () => {
-
+    // i am goinf test my sum functionality inside this sum block and inside this each individual test case can be written inside a it statement 
     describe('Testing sum function', () => {
         it('adds 1 + 2 to equal 3', () => {
             const finalAnswer = sum(1, 2);
@@ -21,6 +23,10 @@ describe('Testing all the calculator functionality', () => {
         it('should return the sum of negative numbers correctly', () => {
             const finalAnswer = sum(-1, -2);
             expect(finalAnswer).toBe(-3);
+        })
+        it("should be able to add two 0s", () => {
+            const finalAnswer = sum(0, 0);
+            expect(finalAnswer).toBe(0);
         })
     });
 

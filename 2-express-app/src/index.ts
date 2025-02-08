@@ -10,7 +10,24 @@ app.post("/sum", (req, res) => {
     const b = req.body.b;
     const answer = a + b;
 
+
+    if(a > 10000000 || b > 10000000){
+        res.status(422).json({
+            message: "Sorry we dont support big numbers"
+        })
+    }
+
     res.json({
         answer
     })
 });
+
+app.post("/multiply", (req, res) => {
+    const a = req.body.a;
+    const b = req.body.b;
+    const result = a * b;
+
+    res.json({
+        answer: result
+    })
+})

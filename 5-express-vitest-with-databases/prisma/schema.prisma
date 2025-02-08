@@ -13,9 +13,15 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Sum {
-  id          Int @id   @default(autoincrement())
-  a           Int
-  b           Int
-  result      Int
+model Request{
+  id        Int   @id @default(autoincrement())
+  type      RequestType
+  a         Int
+  b         Int
+  answer    Int
+}
+
+enum RequestType {
+  Sum
+  Multiply
 }
