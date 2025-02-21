@@ -78,3 +78,22 @@ we want to see was this function called, what inputs was this called with that i
 
 
 cypress, playwright are the frameworks that lets us do end to end testing 
+
+
+A unit test basically helps you test the unit of code while ignoring database calls.
+We used request (request comes from supertest library) to send a request to our http server on a specific route with certain inputs and then we expect the answer toBe() we expected.
+Integration tests says i want every part of my system to be up locally and then i want to actually hit the database, actually inspect the database, put entries in the database.
+If the database is mocked out its an unit test, if the database doesnt mocked out it as an Integration test 
+
+If the teams become very big or the codebase become very big, its a good idea to write tests, people write unit tests they dont write Integration tests because
+1. Integration tests are slower to execute
+2. Its add complexity, it will reduce the code complexity, it will increase the complexity of starting something locally 
+3. Local development setup is required for a developer 
+
+Before we write an integration test, we should write the code that
+1. Brings up the external services
+2. Seeds data in there, create all the tables 
+3. Brings down the service when the tests suites succeeds/ fails
+
+we have to write an adhoc script before starting the actual integration tests 
+

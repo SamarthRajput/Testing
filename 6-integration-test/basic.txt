@@ -1,0 +1,25 @@
+We run npx primsa init to initialise a schema.prisma file and in schema.prisma file we describe what all tables would look like 
+We are creating an application where people can come and sends a /sum request or /multiple request, so we want to store all of these in the database
+
+An enum lets you create variants, if you want to inforce, ki there are only 2 things allowed here either Add or Multiply then you add an enum compared to a string 
+There is a difference between migration and generation 
+Migration means you are actually migrating your database, you are telling your database create these tables 
+npx prisma generate just generates the prisma client locally, it generates a library that we can use in our index.ts 
+
+We havent added app.listen(3000) at the end of index.ts bcz whenever the tests starts, I want the tests to use the app variable 
+at the very top of the tests we were importing app from "../index", we need this app variable to be finally in my tests whenever our tests import the app variable we dont want our http server to start the test will start it themselves
+and hence we make sure index.ts is not listening on a port, we create a separate file usually called bin.ts (bin stands for binary)
+
+In this command 
+docker run -p 5432:5432 -e POSTGRES_PASSWORD=mysecretpassword  -d postgres
+the password is mysecretpassword
+the default username is postgres
+the default database is postgres 
+
+First replace the database url with the current database url 
+our current database url looks like "postgresql://postgres:mysecretpassword@localhost:5432/postgres"
+
+Now run the command 
+npx prisma migrate dev --name init
+this command will 1. creates a folder for you, it wrote some sql for us, it actually sends the create table query to the database, so that my database has migrated 
+now my database has a Request table 
