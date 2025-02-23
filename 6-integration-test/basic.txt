@@ -41,3 +41,6 @@ beforeAll() -> it means before all of these tests run just run the function once
 If you want to clean something before tests, if you want to clean a mock, 
 if you want to clean something else between 2 tests we use the beforeEach statement/function 
 if you want something to run before all the tests we use beforeAll
+
+Integrating our integration testing with our CI/CD pipeline
+add a .env.example file right next .env file we push .env.example file to the github not the .env file
