@@ -97,3 +97,5 @@ Before we write an integration test, we should write the code that
 
 we have to write an adhoc script before starting the actual integration tests 
 
+End to end testing lets you spin up a browser and test things like an end user.
+We are using cypress to do end to end testing 

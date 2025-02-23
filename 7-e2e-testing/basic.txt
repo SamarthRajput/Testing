@@ -1,0 +1,6 @@
+the command to run the cypress tests is 
+npx cypress run --browser chrome --headed
+
+
+headless means if you want to start chrome in the background, you want to start the browser in the background
+headed means you want to actually start the browser, because we want to see, the actual browser and how things are happening 
