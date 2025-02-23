@@ -23,3 +23,21 @@ Now run the command
 npx prisma migrate dev --name init
 this command will 1. creates a folder for you, it wrote some sql for us, it actually sends the create table query to the database, so that my database has migrated 
 now my database has a Request table 
+
+We should use docker compose up instead of the script, docker compose lets you compose multiple containers 
+docker compose just lets you describe your container in a single file, so if you ever want to start all of these services we described in docker-compose.yml file
+we have to just run the command docker-compose up 
+
+As we are writing the tests we have to reset our database, delete everything inside 
+Create a folder scripts inside which create a file run-integration.sh file 
+its a shell script, its not a typescript file 
+we will be running the shell script file by running the command 
+chmod +x ./scripts/*        this means makes all the files executable
+and then run  ./scripts/run-integration.sh
+
+beforeEach() -> it means before each tests runs run the following function or code, if you want something to run before every test 
+The better thing to do is use beforeAll() function
+beforeAll() -> it means before all of these tests run just run the function once, before all these tests run just once run this code base inside the beforeAll function 
+If you want to clean something before tests, if you want to clean a mock, 
+if you want to clean something else between 2 tests we use the beforeEach statement/function 
+if you want something to run before all the tests we use beforeAll

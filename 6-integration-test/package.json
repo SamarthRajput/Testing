@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+	  "test": "vitest",
+    "test:integration": "./scripts/run-integration.sh"
   },
   "keywords": [],
   "author": "",
@@ -17,6 +18,8 @@
     "vitest": "^3.0.6"
   },
   "devDependencies": {
-    "@types/express": "^4.17.21"
+    "@types/express": "^4.17.21",
+    "@types/supertest": "^6.0.2",
+    "supertest": "^7.0.0"
   }
 }
